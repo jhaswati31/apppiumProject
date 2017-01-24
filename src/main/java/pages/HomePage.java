@@ -2,7 +2,7 @@ package pages;
 
 public class HomePage extends BasePage {
 	
-	String flightIconId = "com.makemytrip:id/activity_home_lc_flights_txtvw";
+	String flightIconId = "com.makemytrip:id/activity_home_launcher_flights_imgvw";
 
 	@Override
 	public void isValid() {
