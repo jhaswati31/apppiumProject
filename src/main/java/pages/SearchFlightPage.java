@@ -1,5 +1,7 @@
 package pages;
 
+import utils.HelperMethods;
+
 public class SearchFlightPage extends BasePage{
 	
 	String fromDestinationFieldId = "com.makemytrip:id/depCityCodeAndAirportName";
@@ -12,6 +14,7 @@ public class SearchFlightPage extends BasePage{
 	String okButtonId = "com.makemytrip:id/calOK";
 	String searchButtonId = "com.makemytrip:id/searchFlights";
 	
+	HelperMethods helperMethods = new HelperMethods();
 	
 	@Override
 	public void isValid() {
@@ -42,6 +45,15 @@ public class SearchFlightPage extends BasePage{
 	
 	public void clickOnSearch(){
 		helper.findElementById(searchButtonId).click();
+	}
+	
+	public void setTravelDetailsAndSearchFlight(String departureCityName, String arrivalCityName){
+		setFromDestination(departureCityName);
+		setToDestination(arrivalCityName);
+		setDepartureDate();
+		setReturnDate();
+		clickOnSearch();
+		helperMethods.sleep(5000);
 	}
 	
 

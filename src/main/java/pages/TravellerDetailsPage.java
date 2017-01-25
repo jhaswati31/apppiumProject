@@ -10,6 +10,10 @@ public class TravellerDetailsPage extends BasePage{
 	String phoneFieldId = "com.makemytrip:id/pax_phone_number";
 	String bookFlightButton = "com.makemytrip:id/df_book_flight";
 	String phoneNumberText = "Phone Number";
+	String insurancePopId = "android:id/content";
+	String agreeAndContinueButtonForInsurance = "com.makemytrip:id/flight_agree_insurance_button";
+	String skipButtonIdOnMealsPage = "com.makemytrip:id/tvSkipClearView";
+	String fareChangeContinueButtonId = "com.makemytrip:id/button_fare_change_continue";
 	
 	@Override
 	public void isValid() {
@@ -26,11 +30,13 @@ public class TravellerDetailsPage extends BasePage{
 	
 	public void setEmail(){
 		helper.scrollToElement(phoneNumberText);
+		helper.findElementById(emailFieldId).click();
 		helper.findElementById(emailFieldId).sendKeys("test1@gmail.com");
 		helper.hideKeyboard();
 	}
 	
 	public void setPhoneNumber(){
+		helper.findElementById(phoneFieldId).click();
 		helper.findElementById(phoneFieldId).sendKeys("0000078978");
 		helper.hideKeyboard();
 	}
@@ -40,22 +46,34 @@ public class TravellerDetailsPage extends BasePage{
 	}
 	
 	public void acceptInsurance(){
-		
+		helper.findElementById(agreeAndContinueButtonForInsurance).click();
+	}
+	
+	public void acceptFareChange(){
+		if (helper.findElementById(fareChangeContinueButtonId).isDisplayed()){
+			helper.findElementById(fareChangeContinueButtonId).click();
+		}
 	}
 	
 	public void skipAddingMeals(){
-		
+		helper.findElementById(skipButtonIdOnMealsPage).click();
 	}
 	
-	public void clickOnBookFlightOnAddMealsPage(){
-		
-	}
-	
-	public void fillTravellerDetails() {
+	public void fillTravellerDetailsAndContactDetails() {
 		addGuestDetails();
 		setEmail();
 		setPhoneNumber();
+	}
+	
+	public void goToPaymentsModePage(){
 		clickOnBookFlight();
+		acceptInsurance();
+		acceptFareChange();
+		clickOnBookFlight();
+		helper.sleep(5000);
 	}
 
 }
+
+
+

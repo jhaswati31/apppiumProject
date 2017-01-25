@@ -6,9 +6,9 @@ import pages.FlightsListingPage;
 import pages.HomePage;
 import pages.JourneyDetailsPage;
 import pages.SearchFlightPage;
+import pages.SelectPaymentModePage;
 import pages.TravellerDetailsPage;
 import utils.AppLauncher;
-import utils.HelperMethods;
 
 public class PaymentPageTest extends AppLauncher{
 	
@@ -17,20 +17,18 @@ public class PaymentPageTest extends AppLauncher{
 	FlightsListingPage flightsList = new FlightsListingPage();
 	JourneyDetailsPage journeydetails = new JourneyDetailsPage();
 	TravellerDetailsPage travellerDetails = new TravellerDetailsPage();
-	HelperMethods helperMethods = new HelperMethods();
+	SelectPaymentModePage paymentModes = new SelectPaymentModePage();
+	
 	
 	@Test
 	public void paymentGatewayPageTest(){
 		homePage.selectFlightBoking();
-		searchFlight.setFromDestination("New Delhi");
-		searchFlight.setToDestination("Bangalore");
-		searchFlight.setDepartureDate();
-		searchFlight.setReturnDate();
-		searchFlight.clickOnSearch();
-		helperMethods.sleep(5000);
+		searchFlight.setTravelDetailsAndSearchFlight("Goa", "New Delhi");
 		flightsList.clickOnBook();
 		journeydetails.clickOnContinue();
-		travellerDetails.fillTravellerDetails();
+		travellerDetails.fillTravellerDetailsAndContactDetails();
+		travellerDetails.goToPaymentsModePage();
+		paymentModes.isValid();
 	}
 
 }
