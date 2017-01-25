@@ -1,6 +1,8 @@
 package utils;
 
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -28,6 +30,8 @@ public class AppLauncher {
 	        capabilities.setCapability("appium-version", "1.4.16");
 	        
 	        driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4444/wd/hub"),capabilities);
+	        
+	        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	        
 	        return driver;
 	    }

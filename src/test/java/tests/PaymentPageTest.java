@@ -8,6 +8,7 @@ import pages.JourneyDetailsPage;
 import pages.SearchFlightPage;
 import pages.TravellerDetailsPage;
 import utils.AppLauncher;
+import utils.HelperMethods;
 
 public class PaymentPageTest extends AppLauncher{
 	
@@ -16,6 +17,7 @@ public class PaymentPageTest extends AppLauncher{
 	FlightsListingPage flightsList = new FlightsListingPage();
 	JourneyDetailsPage journeydetails = new JourneyDetailsPage();
 	TravellerDetailsPage travellerDetails = new TravellerDetailsPage();
+	HelperMethods helperMethods = new HelperMethods();
 	
 	@Test
 	public void paymentGatewayPageTest(){
@@ -25,6 +27,7 @@ public class PaymentPageTest extends AppLauncher{
 		searchFlight.setDepartureDate();
 		searchFlight.setReturnDate();
 		searchFlight.clickOnSearch();
+		helperMethods.sleep(5000);
 		flightsList.clickOnBook();
 		journeydetails.clickOnContinue();
 		travellerDetails.fillTravellerDetails();

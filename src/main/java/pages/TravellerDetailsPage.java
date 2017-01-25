@@ -9,6 +9,7 @@ public class TravellerDetailsPage extends BasePage{
 	String emailFieldId = "com.makemytrip:id/pax_email_til";
 	String phoneFieldId = "com.makemytrip:id/pax_phone_number";
 	String bookFlightButton = "com.makemytrip:id/df_book_flight";
+	String phoneNumberText = "Phone Number";
 	
 	@Override
 	public void isValid() {
@@ -24,11 +25,14 @@ public class TravellerDetailsPage extends BasePage{
 	}
 	
 	public void setEmail(){
+		helper.scrollToElement(phoneNumberText);
 		helper.findElementById(emailFieldId).sendKeys("test1@gmail.com");
+		helper.hideKeyboard();
 	}
 	
 	public void setPhoneNumber(){
-		helper.findElementById(phoneFieldId).sendKeys("000078978");
+		helper.findElementById(phoneFieldId).sendKeys("0000078978");
+		helper.hideKeyboard();
 	}
 	
 	public void clickOnBookFlight(){
@@ -49,12 +53,6 @@ public class TravellerDetailsPage extends BasePage{
 	
 	public void fillTravellerDetails() {
 		addGuestDetails();
-		try {
-			helper.swipePageFromBottomToTop();
-		} catch (InterruptedException e) {
-			System.out.println("catching exception");
-			e.printStackTrace();
-		}
 		setEmail();
 		setPhoneNumber();
 		clickOnBookFlight();

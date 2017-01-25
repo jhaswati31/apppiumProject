@@ -13,6 +13,4 @@ public class FlightsListingPage extends BasePage {
 		helper.findElementById(bookButtonId).click();
 	}
 	
-	
-
 }
